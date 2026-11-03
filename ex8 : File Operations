@@ -1,0 +1,71 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class person
+{
+protected:
+    char name[80];
+    int age;
+
+public:
+    void getData()
+    {
+        cout << "\nEnter name: ";
+        cin >> name;
+
+        cout << "Enter age: ";
+        cin >> age;
+    }
+
+    void showData()
+    {
+        cout << "\nName: " << name;
+        cout << "\nAge: " << age;
+    }
+};
+
+int main()
+{
+    char ch;
+    person pers;
+
+    fstream file;
+
+    file.open("GROUP.DAT",
+              ios::app | ios::out | ios::in | ios::binary);
+
+    if (!file)
+    {
+        cout << "File opening error!";
+        return 1;
+    }
+
+    do
+    {
+        cout << "\nEnter person's data";
+        pers.getData();
+
+        file.write((char*)(&pers), sizeof(pers));
+
+        cout << "Enter another person (y/n)? ";
+        cin >> ch;
+
+    } while (ch == 'y');
+
+    file.flush();
+    file.clear();
+    file.seekg(0, ios::beg);
+
+    cout << "\nStored Person Details:";
+
+    while (file.read((char*)(&pers), sizeof(pers)))
+    {
+        cout << "\nPerson:";
+        pers.showData();
+    }
+
+    file.close();
+
+    return 0;
+}
