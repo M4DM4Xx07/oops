@@ -1,0 +1,65 @@
+#include <iostream>
+using namespace std;
+
+class Counter
+{
+private:
+    unsigned int count;
+
+public:
+    // Default constructor
+    Counter() : count(0)
+    {
+    }
+
+    // Parameterized constructor
+    Counter(int c)
+    {
+        count = c;
+    }
+
+    // Copy constructor
+    Counter(Counter &c)
+    {
+        count = c.count;
+    }
+
+    // Increment function
+    void inc_count()
+    {
+        count++;
+    }
+
+    // Decrement function
+    void dec()
+    {
+        count--;
+    }
+
+    // Display function
+    void show()
+    {
+        cout << "Count is " << count << endl;
+    }
+
+    // Destructor
+    ~Counter()
+    {
+        cout << "Object destroyed\n";
+    }
+};
+
+int main()
+{
+    Counter c1, c2(20), c3(c2);
+
+    c1.inc_count();
+    c2.inc_count();
+    c3.dec();
+
+    c1.show();
+    c2.show();
+    c3.show();
+
+    return 0;
+}
