@@ -1,0 +1,48 @@
+class StringDemo
+{
+    public static void main(String args[])
+    {
+        String strOb1 = "Annamalai";
+        String strOb2 = "University";
+        String strOb3 = strOb1;
+
+        // String Display
+        System.out.println("String 1 is : " + strOb1);
+        System.out.println("String 2 is : " + strOb2);
+        System.out.println("String 3 is : " + strOb3);
+
+        // String Length
+        System.out.println("Length of String 1 is : " + strOb1.length());
+
+        // Character at position
+        System.out.println("Char at index 3 in String 1 is : " + strOb1.charAt(3));
+
+        // String Comparison
+        if(strOb1.equals(strOb2))
+            System.out.println("String 1 is equal to String 2");
+        else
+            System.out.println("String 1 is not equal to String 2");
+
+        if(strOb1.equals(strOb3))
+            System.out.println("String 1 is equal to String 3");
+        else
+            System.out.println("String 1 is not equal to String 3");
+
+        // Substring finding
+        String substr;
+        substr = strOb1.substring(4, 9);
+
+        System.out.println("Substring at 4 to 9 in String 1 is : " + substr);
+
+        // String reversal
+        StringBuffer str = new StringBuffer("Annamalai");
+
+        System.out.println("Reversed string of " + str + " is : " + str.reverse());
+
+        // String concatenation
+        String s3;
+        s3 = strOb1.concat(strOb2);
+
+        System.out.println("Concatenated string of String 1 and String 2 is : " + s3);
+    }
+}
